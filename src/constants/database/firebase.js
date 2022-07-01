@@ -1,0 +1,1 @@
+export const URL_API = "https://restauranteapp-93575-default-rtdb.firebaseio.com/";
