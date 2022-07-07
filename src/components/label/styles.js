@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     },
     label: {
         fontSize: 14,
-        fontFamily: "Lato-Bold",
+        fontFamily: "Roboto-Bold",
         color: colors.text,
     }
 })

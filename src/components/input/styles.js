@@ -11,8 +11,14 @@ export const styles = StyleSheet.create({
         borderBottomWidth: 1,
         width: '90%',
         fontFamily: "Roboto-Regular",
-        marginBottom: 10,
+        marginBottom: 5,
     },
-    message: {},
-    helperText: {},
+    message: {
+        marginVertical: 0
+    },
+    helperText: {
+        fontFamily: "Roboto-Bold",
+        fontSize: 12,
+        color: colors.error,
+    },
 })

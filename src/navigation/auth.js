@@ -1,19 +1,36 @@
-import { AuthScreen } from "../screens";
+import { AuthScreen } from "../screens/index";
+import { Platform } from "react-native";
 import React from "react";
+import { colors } from "../constants/themes/colors";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
-const AuthNavigator = () =>  (
-  <Stack.Navigator
-    initialRouteName="Auth"
-    screenOptions={{headerShown: false}}
-  >
-  <Stack.Screen
-    name="Auth"
-    component={AuthScreen}
-  />
-  </Stack.Navigator>
-);
+const isIOS = Platform.OS === "ios";
+
+const AuthNavigator = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Auth"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: isIOS ? colors.secondary : colors.primary,
+        },
+        headerTintColor: isIOS ? colors.black : colors.white,
+        headerTitleStyle: {
+          fontFamily: "Roboto-Bold",
+        },
+      }}
+    >
+      <Stack.Screen
+        name="Auth"
+        component={AuthScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 export default AuthNavigator;

@@ -1,5 +1,6 @@
 import { Button, KeyboardAvoidingView, Text, TouchableOpacity, View } from "react-native";
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
+import { UPDATED_FORM, onFocusOut, onInputChange } from "../../utils/forms";
 import { signin, signup } from "../../store/actions/auth.action";
 
 import { Input } from "../../components/index";
@@ -7,25 +8,51 @@ import { colors } from "../../constants/themes/colors";
 import { styles } from "./styles";
 import { useDispatch } from "react-redux";
 
+const initialState = {
+    email: { value: '', touched: false, hasError: true, error: '' },
+    password: { value: '', touched: false, hasError: true, error: '' },
+    isFormValid: false
+}
+
+const formReducer = (state, action) => {
+    switch (action.type) {
+        case UPDATED_FORM:
+            const { name, value, hasError, error, touched, isFormValid } = action.data;
+            return {
+                ...state,
+                [name]: {
+                    ...state[name],
+                    value,
+                    hasError,
+                    error,
+                    touched,
+                },
+                isFormValid
+            }
+    default: 
+        return state;
+    }
+}
+
 const AuthScreen = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [formState, dispatchFormState] = useReducer(formReducer, initialState);
     const [isLogin, setIsLogin] = useState(true);
     const dispatch = useDispatch();
     const title = isLogin ? 'Login'  :'Register';
     const message =isLogin ? "Don't you have an account?" : 'Do you have an account?';
     const messageAction = isLogin ? 'Register' : 'Login';
-
+    console.log("hello, here");
     const onHandlerAuth = () => {
+        console.log("inside");
         dispatch( isLogin ? signin(email,password) : signup(email, password));
     }
 
     const onHandleChange = (text, type) => {
-        if(type === 'email') {
-            setEmail(text);
-        } else {
-            setPassword(text);
-        }
+        onInputChange(type, text, dispatchFormState, formState);
+    }
+
+    const onBlurInput = (text, type) => {
+        onFocusOut(type, text, dispatchFormState, formState);
     }
 
     const handleChangeAuth = () => {
@@ -45,7 +72,11 @@ const AuthScreen = () => {
                     autoCorrect={false}
                     keyboardType='email-address'
                     onChangeText={(text) => onHandleChange(text, 'email')}
-                    value={email}
+                    onBlur={(e) => onBlurInput(e.nativeEvent.text, 'email')}
+                    value={formState.email.value}
+                    hasError={formState.email.hasError}
+                    error={formState.email.error}
+                    touched={formState.email.touched}
                     label='Email'
                 />
                 <Input 
@@ -54,8 +85,12 @@ const AuthScreen = () => {
                     autoCapitalize='none'
                     autoCorrect={false}
                     secureTextEntry={true}
-                    onChangeText={(text) => setPassword(text, 'password')}
-                    value={password}
+                    onChangeText={(text) => onHandleChange(text, 'password')}
+                    onBlur={(e) => onBlurInput(e.nativeEvent.text, 'password')}
+                    value={formState.password.value}
+                    hasError={formState.password.hasError}
+                    error={formState.password.error}
+                    touched={formState.password.touched}
                     label='Password'
                 />
                 <Button title={title} color={colors.primary} onPress={onHandlerAuth} />

@@ -1,9 +1,9 @@
 import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
 
+import FastImage from "react-native-fast-image";
 import React from "react";
 import { colors } from "../../constants/themes/colors";
 import { styles } from "./styles";
-import FastImage from "react-native-fast-image";
 
 const CategoryItem = ({ item, onSelected }) => {
   const FoodImages = () => (
