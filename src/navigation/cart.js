@@ -26,7 +26,7 @@ const CartNavigator = () => {
         name="Cart"
         component={CartScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
         }}
       />
     </Stack.Navigator>

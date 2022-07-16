@@ -1,3 +1,4 @@
+import BookingNavigator from "./bookings";
 import CartNavigator from "./cart";
 import IonicIcons from "@expo/vector-icons/Ionicons";
 import LocationNavigator from "./location";
@@ -59,7 +60,7 @@ const TabNavigator = () => {
       />
       <BottomTabs.Screen
         name="BookingTab"
-        component={LocationNavigator}
+        component={BookingNavigator}
         options={{
           tabBarLabel: ({ focused }) => LabelBottomTab( focused, "Booking"),
           tabBarIcon: ({ focused }) => (

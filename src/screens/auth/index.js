@@ -30,7 +30,7 @@ const formReducer = (state, action) => {
                 isFormValid
             }
     default: 
-        return state;
+        return state; 
     }
 }
 

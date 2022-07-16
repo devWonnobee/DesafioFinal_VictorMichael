@@ -1,4 +1,4 @@
-import { Location } from "../screens/index";
+import { Booking } from "../screens/index";
 import { Platform } from "react-native";
 import React from "react";
 import { colors } from "../constants/themes/colors";
@@ -8,10 +8,10 @@ const Stack = createNativeStackNavigator();
 
 const isIOS = Platform.OS === "ios";
 
-const LocationNavigator = () => {
+const BookingNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Location"
+      initialRouteName="Booking"
       screenOptions={{
         headerStyle: {
           backgroundColor: isIOS ? colors.secondary : colors.primary,
@@ -23,8 +23,8 @@ const LocationNavigator = () => {
       }}
     >
       <Stack.Screen
-        name="Location"
-        component={Location}
+        name="Booking"
+        component={Booking}
         options={{
           headerShown: true,
         }}
@@ -33,4 +33,4 @@ const LocationNavigator = () => {
   );
 };
 
-export default LocationNavigator;
+export default BookingNavigator;

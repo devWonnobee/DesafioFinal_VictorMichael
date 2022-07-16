@@ -11,11 +11,8 @@ const AppNavigator = () => {
   return (
     <SafeAreaView style={{ flex: 1}}>
       <NavigationContainer>
-      {userId ? 
-          (<TabNavigator />) : 
-          (<AuthNavigator />)
-        }
-        </NavigationContainer>
+        <TabNavigator />
+      </NavigationContainer>
     </SafeAreaView>
 
   )
