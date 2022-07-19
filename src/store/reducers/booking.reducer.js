@@ -1,16 +1,24 @@
-import BookingModel from "../../models/booking.model";
-import { bookingTypes } from "../types/booking.types";
-
-const { ADD_BOOKING, LIST_BOOKING, DELETE_BOOKING } = bookingTypes;
+import { ADD_BOOKING } from "../actions/booking.action"
+import BookingModel from '../../models/booking.model'
 
 const initialState = {
-  BookingModel: [],
-};
+  bookings: []
+}
 
-const bookingReducer = (state = initialState, action) => {
-  switch(type.action) {
+export default (state = initialState, action) => {
+  switch(action.type) {
     case ADD_BOOKING:
       const newBooking = new BookingModel(
-        action.payload.id, action.payload.name, action.payload.surname, action.payload.phone, action.payload._time);
+        action.payload.id.toString(),
+        action.payload.name,
+        action.payload.surname,
+        action.payload.date,
+        action.payload.time)
+        return {
+          ...state,
+          bookings: state.bookings.concat(newBooking)
+        }
+    default:
+      return state
   }
 }

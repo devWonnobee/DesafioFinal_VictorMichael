@@ -38,11 +38,13 @@ const formReducer = (state, action) => {
 }
 const Booking = () => {
   const [formState, dispatchFormState] = useReducer(formReducer, initialState);
-  const [id, setId] = useState(1);
   const dispatch = useDispatch();
-  const onHandlerAuth = () => {
-    dispatch(addBooking(id, name, surname, phone, date));
+  const [id, setId] = useState(1);
+  const onHandlerAuth = (pname, surname, phone, date, _time) => {
     console.log("send the data to the sql");
+    let insertId = setId;
+    dispatch(addBooking(pname, surname, phone, date, _time));
+    
   }
   const onHandleChange = (text, type) => {
     onInputChange(type, text, dispatchFormState, formState);

@@ -1,32 +1,20 @@
 import { getBooking, insertBooking } from "../../db";
 
-import { bookingTypes } from "../types/booking.types";
+export const ADD_BOOKING = 'ADD_BOOKING'
 
-const { ADD_BOOKING, LIST_BOOKING, DELETE_BOOKING } = bookingTypes;
-
-export const addBooking = (id, name, surname, phone, date, _time) =>  {
-    return async dispatch => {
-      try {
-        const result = await insertBooking(id, name, surname, phone, _time);
-        console.log('result insertAddress', result)
-
-        dispatch({
-          type: ADD_BOOKING,
-        })
-      } catch (error) {
-        console.log(error.message);
-        throw error;
-      }
+export const addBooking = (pname, surname, date, time) => {
+  return async dispatch => {
+    try{
+      const result = await insertBooking(
+        pname,
+        surname,
+        date,
+        time)
+        console.log(result);
+      dispatch({type: ADD_BOOKING, payload: {id: result.insertId, pname, surname, date, time}})
+    } catch (err) {
+      console.log(err.message)
+      throw err
     }
-    
+  }
 }
-
-export const listBooking = (id) => ({
-  type: LIST_BOOKING,
-  id
-});
-
-export const deleteBooking = (id) => ({
-  type: DELETE_BOOKING,
-  id
-})

@@ -17,11 +17,11 @@ export const init = () => {
     return promise;
 }
 
-export const insertBooking = (id, name, surname, phone, date, _time) => {
+export const insertBooking = (name, surname, phone, date, _time) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {
             tx.executeSql(
-                'INSERT INTO booking (name, surname, phone, date, time) VALUES (?, ?, ?, ?, ?, ?)',
+                'INSERT INTO booking (name, surname, phone, date, time) VALUES (?, ?, ?, ?, ?)',
                 [name, surname, phone, date, _time],
                 (_, result) => {
                     console.log(result);
