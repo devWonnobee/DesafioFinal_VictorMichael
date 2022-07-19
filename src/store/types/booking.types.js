@@ -1,0 +1,5 @@
+export const bookingTypes = {
+  ADD_BOOKING: "SAVE_BOOKING",
+  LIST_BOOKING: "LIST_BOOKING",
+  DELETE_BOOKING: "DELETE_BOOKING",
+};

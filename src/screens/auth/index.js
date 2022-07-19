@@ -39,7 +39,7 @@ const AuthScreen = () => {
     const [isLogin, setIsLogin] = useState(true);
     const dispatch = useDispatch();
     const title = isLogin ? 'Login'  :'Register';
-    const message =isLogin ? "Don't you have an account?" : 'Do you have an account?';
+    const message = isLogin ? "Don't you have an account?" : 'Do you have an account?';
     const messageAction = isLogin ? 'Register' : 'Login';
     console.log("hello, here");
     const onHandlerAuth = () => {

@@ -7,3 +7,4 @@ export { default as FoodDetails } from './food-details/index';
 export { default as Location} from './location/index';
 export { default as CartScreen } from "./cart/index";
 export { default as AuthScreen } from "./auth/index";
+export { default as FoodRate } from "./foodrate/index";

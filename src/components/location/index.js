@@ -12,7 +12,7 @@ import { useState } from "react";
 
 const LocationSelector = props => {
 
-  const restaurantRegion = {
+  const restaurantLocation = {
     latitude: 36.37758053238511,
     longitude: -5.2501629171868,
     latitudeDelta: 0.01,
@@ -23,9 +23,9 @@ const LocationSelector = props => {
     <View style={styles.container}>
       <MapView 
       style={styles.map}
-      initialRegion={restaurantRegion}
+      initialRegion={restaurantLocation}
       >
-        <Marker coordinate={restaurantRegion} />
+        <Marker coordinate={restaurantLocation} />
       </MapView>
     </View>
   )

@@ -2,8 +2,17 @@ import { ActivityIndicator } from 'react-native';
 import { Provider } from 'react-redux';
 import React from "react";
 import Root from './src/index';
+import { init } from './src/db';
 import store from './src/store';
 import { useFonts } from '@expo-google-fonts/inter';
+
+init()
+  .then(() => {
+    console.log("DB conected, ready to go");
+  })
+  .catch((err) => {
+    console.log("Error connection DB", err);
+  });
 
 export default function App() {
 

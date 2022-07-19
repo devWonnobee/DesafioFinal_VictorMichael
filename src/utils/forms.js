@@ -3,10 +3,10 @@ const minPasswordLength = 6;
 
 export const UPDATED_FORM = 'UPDATED_FORM';
 
-export const validateInput = (name, value) => {
+export const validateInput = (title, value) => {
     let hasError = false;
     let error = '';
-    switch (name) {
+    switch (title) {
         case 'email':
             if(value.trim() === '') {
                 hasError = true;
@@ -31,6 +31,49 @@ export const validateInput = (name, value) => {
                 error = '';
             }
             break;
+        case 'pname':
+            if(value === null) {
+                hasError = true;
+                error = 'Name is required';
+            } else {
+                hasError = false;
+                error = '';
+            }
+            break;
+        case 'surname':
+            if(value === null) {
+                hasError = true;
+                error = 'Surname is required';
+            } else {
+                hasError = false;
+                error = '';
+            }
+            break;
+        case 'phone':
+            if(value == null) {
+                hasError = true;
+                error = 'Phone is required';
+            } else {
+                hasError = false;
+                error = '';
+            }
+            break;
+        case 'date':
+            if(value == null) {
+                hasError = true;
+                error = 'Date is required';
+            } else {
+                hasError = false; 
+                error = '';
+            }
+        case '_time':
+            if(value == null) {
+                hasError = true;
+                error = 'Time is required';
+            } else {
+                hasError = false;
+                error = '';
+            }
         default:
             break;
     }

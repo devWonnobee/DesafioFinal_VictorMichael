@@ -1,14 +1,56 @@
 import { StyleSheet } from "react-native";
+import { colors } from "../../constants/themes/colors";
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#3d3d3d',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontFamily: 'OpenSans-Regular',
-    fontSize: 20,
-  },
+    containerKeyboard: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    container: {
+      flex: 1,
+    },
+    containerForm: {
+      height: "80%",
+      maxWidth: 400,
+      padding: 15,
+      margin: 15,
+      borderColor: colors.primary,
+      borderWidth: 1,
+      borderRadius: 10,
+      backgroundColor: colors.white,
+    },
+    buttonContainer: {
+      height: "10%",
+      alignItems: 'center',
+      
+    },
+    label: {
+      fontSize: 14,
+      fontFamily: "Roboto-Bold",
+      marginVertical: 5,
+    },
+    title: {
+      fontSize: 18,
+      fontFamily: 'Roboto-Bold',
+      marginBottom: 15,
+      textAlign: 'center',
+    },
+    propmt: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    propmtMessage: {
+      fontSize: 14,
+      fontFamily: 'Roboto-Regular',
+      color: colors.text,
+      marginRight: 15
+    },
+    propmtButton: {
+      fontSize: 14,
+      fontFamily: 'Roboto-Bold',
+      color: colors.primary,
+      textAlign: 'center',
+    }
 });

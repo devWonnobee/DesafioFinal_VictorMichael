@@ -1,5 +1,6 @@
 import BookingNavigator from "./bookings";
 import CartNavigator from "./cart";
+import FoodRateNavigator from "./food-rate";
 import IonicIcons from "@expo/vector-icons/Ionicons";
 import LocationNavigator from "./location";
 import MainNavigator from "./main";
@@ -94,6 +95,20 @@ const TabNavigator = () => {
           tabBarIcon: ({ focused }) => (
             <IonicIcons
               name={focused ? "md-basket" : "md-basket-outline"}
+              size={20}
+              color={focused ? colors.primary : colors.secondary}
+            />
+          ),
+        }}
+      />
+      <BottomTabs.Screen
+        name="FoodRate"
+        component={FoodRateNavigator}
+        options={{
+          tabBarLabel: ({ focused }) => LabelBottomTab( focused, "Rate"),
+          tabBarIcon: ({ focused }) => (
+            <IonicIcons
+              name={focused ? "md-star" : "md-star-outline"}
               size={20}
               color={focused ? colors.primary : colors.secondary}
             />

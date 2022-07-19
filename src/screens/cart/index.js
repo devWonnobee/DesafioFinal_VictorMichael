@@ -7,7 +7,6 @@ import React from "react";
 import { styles } from "./styles";
 
 const CartScreen = () => {
-  console.log("Hello, cart");
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.items);
   const total = useSelector((state) => state.cart.total);

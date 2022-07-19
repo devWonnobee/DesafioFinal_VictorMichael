@@ -4,3 +4,4 @@ export { default as CartItem } from "./cart-item/index";
 export { default as AddItemModal } from "./add-item-modal/index";
 export { default as Input } from "./input/index";
 export { default as LocationSelector } from "./location/index";
+export { default as CameraButton} from "./buttons/cameraButton";
