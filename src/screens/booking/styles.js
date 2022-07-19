@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
       borderWidth: 1,
       borderRadius: 10,
       backgroundColor: colors.white,
+      alignItems: 'center',
     },
     buttonContainer: {
       height: "10%",
@@ -52,5 +53,15 @@ export const styles = StyleSheet.create({
       fontFamily: 'Roboto-Bold',
       color: colors.primary,
       textAlign: 'center',
+    },
+    input: {
+      width: 300,
+      borderWidth: 1,
+      borderColor: '#555',
+      borderRadius: 10,
+      backgroundColor: '#ffffff',
+      textAlign: 'center',
+      fontSize: 20,
+      marginBottom: 10,
     }
 });

@@ -12,8 +12,7 @@ export default (state = initialState, action) => {
         action.payload.id.toString(),
         action.payload.name,
         action.payload.surname,
-        action.payload.date,
-        action.payload.time)
+        action.payload.date)
         return {
           ...state,
           bookings: state.bookings.concat(newBooking)

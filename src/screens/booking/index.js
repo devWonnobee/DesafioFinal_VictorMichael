@@ -1,115 +1,60 @@
-import React, { useReducer, useState } from "react";
-import { Text, TouchableOpacity, View } from 'react-native';
-import { UPDATED_FORM, onInputChange } from '../../utils/forms';
+import { Alert, Button, Text, TextInput, View } from 'react-native';
+import React, { useState } from 'react';
 
-import { Input } from '../../components';
 import { addBooking } from "../../store/actions/booking.action";
-import { colors } from '../../constants/themes/colors';
 import { styles } from './styles';
 import { useDispatch } from 'react-redux';
 
-const initialState = {
-  pname: {value: '', touched: false, hasError: true, error: ''},
-  surname: {value: '', touched: false, hasError: true, error: ''},
-  phone: {value: '', touched: false, hasError: true, error: ''},
-  date: {value: '', touched: false, hasError: true, error: ''},
-  _time: {value: '', touched: false, hasError: true, error: ''},
-  isFormValid: false
-}
-
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case UPDATED_FORM:
-      const {name, value, hasError, error, touched, isFormValid } = action.data;
-      return {
-        ...state,
-        [name]: {
-          ...state[name],
-          value, 
-          hasError,
-          error,
-          touched,
-        },
-        isFormValid
-      }
-  default:
-    return state;
-  }
-}
-const Booking = () => {
-  const [formState, dispatchFormState] = useReducer(formReducer, initialState);
+const BookingScreen = () => {
   const dispatch = useDispatch();
-  const [id, setId] = useState(1);
-  const onHandlerAuth = (pname, surname, phone, date, _time) => {
-    console.log("send the data to the sql");
-    let insertId = setId;
-    dispatch(addBooking(pname, surname, phone, date, _time));
-    
+  const [ name, setName ] = useState('');
+  const [ surname, setSurname ] = useState('');
+  const [ phone, setPhone ] = useState('');
+  const [ date, setDate ] = useState('');
+  const [ time, setTime ] = useState('');
+
+  const onHandleAddBooking = async () => {
+    if( name.length == 0 || 
+        surname.length == 0 ||
+        phone.length == 0 ||
+        date.length == 0) {
+      Alert.alert('Warning', 'Please enter your data.');
+    } else {
+      
+    }
+    dispatch(addBooking(name, surname, phone, date));
   }
-  const onHandleChange = (text, type) => {
-    onInputChange(type, text, dispatchFormState, formState);
-    console.log(formState)
-  }
-  return (
+  return(
     <View style={styles.container}>
       <View style={styles.containerForm}>
         <Text style={styles.text}>Book your table</Text>
-        <Input
-          placeholder='Name'
-          placeholderTextColor={colors.text}
-          autoCapitalize='none'
-          onChangeText={(text) => onHandleChange(text, 'pname')}
-          autoCorrect={false}
-          value={formState.pname.value}
-          hasError={formState.pname.hasError}
-          error={formState.pname.error}
-          touched={formState.pname.touched}
-          label='Name'
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your name"
+          onChangeText={(value) => setName(value)}
         />
-        <Input
-          label='Surname'
-          placeholder='Surname'
-          placeholderTextColor={colors.text}
-          onChangeText={(text) => onHandleChange(text, 'surname')}
-          autoCorrect={false}
-          value={formState.surname.value}
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your surname"
+          onChangeText={(value) => setSurname(value)}
         />
-        <Input
-          label='Phone Number'
-          placeholder='+1'
-          placeholderTextColor={colors.text}
-          onChangeText={(text) => onHandleChange(text, 'phone')}
-          autoCorrect={false}
-          value={formState.phone.value}
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your phone number"
+          onChangeText={(value) => setPhone(value)}
         />
-        <Input
-          label='Date'
-          placeholder='00/00/0000'
-          placeholderTextColor={colors.text}
-          onChangeText={(text) => onHandleChange(text, 'date')}
-          autoCorrect={false}
-          value={formState.date.value}
+        <TextInput
+          style={styles.input}
+          placeholder="DAY/TIME = 12:00"
+          onChangeText={(value) => setDate(value)}
         />
-        <Input
-          label='Time'
-          placeholder='00:00'
-          placeholderTextColor={colors.text}
-          onChangeText={(text) => onHandleChange(text, '_time')}
-          autoCorrect={false}
-          value={formState._time.value}
+        <Button 
+          title="Reserve"
+          onPress={onHandleAddBooking}
         />
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.propmtButton}
-          onPress={onHandlerAuth}
-        >
-          <Text>Send</Text>
-        </TouchableOpacity>
       </View>
     </View>
-
   )
 }
 
-export default Booking;
+export default BookingScreen;
