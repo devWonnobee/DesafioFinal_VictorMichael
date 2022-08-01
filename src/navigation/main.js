@@ -11,8 +11,9 @@ const MainNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#3d3d3d',
+          backgroundColor: '#563635',
         },
+        headerTintColor: '#fff'
       }}
 
       initialRouteName="Splash"
@@ -32,21 +33,13 @@ const MainNavigator = () => {
         }}
       />
       <Stack.Screen 
-        name="MenuList" 
-        component={MenuList}
-        options={{ 
-          headerTitle: () => (
-            <Image style={{width: 300, height: 52}} source={require('../../assets/images/logo_header.png')} /> 
-          ),
-        }}
-      />
-      <Stack.Screen 
         name="Booking" 
         component={Booking}
         options={{ 
           headerTitle: () => (
             <Image style={{width: 300, height: 52}} source={require('../../assets/images/logo_header.png')} /> 
           ),
+          headerTitle: "white",
         }} 
       />
       <Stack.Screen 

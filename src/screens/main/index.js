@@ -4,7 +4,7 @@ import Card from '../../components/card';
 import React from "react";
 import { styles } from './styles';
 
-const Main = ({navigation}) => {
+const Main = () => {
   return (
     <View style={styles.container}>
       <ImageBackground

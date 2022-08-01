@@ -1,5 +1,6 @@
-import { FoodRate } from "../screens/index";
-import { Platform } from "react-native";
+import { FoodRate, Photo } from "../screens/index";
+import { Image, Platform } from "react-native";
+
 import React from "react";
 import { colors } from "../constants/themes/colors";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -8,7 +9,9 @@ const Stack = createNativeStackNavigator();
 
 const isIOS = Platform.OS === "ios";
 
-const FoodRateNavigator = () => {
+
+
+const FoodRateNavigator = (navigation, route) => {
   return (
     <Stack.Navigator
       initialRouteName="FoodRateScreen"
@@ -25,6 +28,12 @@ const FoodRateNavigator = () => {
       <Stack.Screen
         name="Food Rate"
         component={FoodRate}
+        options={{ title: 'Food Pic Rate'}
+        }
+      />
+      <Stack.Screen
+        name="RatePic"
+        component={Photo}
         options={{
           headerShown: true,
         }}

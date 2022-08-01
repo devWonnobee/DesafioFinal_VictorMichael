@@ -1,5 +1,6 @@
-import { Categories, MenuList } from "../screens/index";
+import { Categories, MenuList, FoodDetails } from "../screens/index";
 
+import { Image } from 'react-native';
 import { Platform } from "react-native";
 import React from "react";
 import { colors } from "../constants/themes/colors";
@@ -27,7 +28,26 @@ const MenuNavigator = () => {
         name="Menu"
         component={Categories}
         options={{
-          headerShown: false,
+          headerShown: true,
+        }}
+      />
+      <Stack.Screen 
+        name="MenuList" 
+        component={MenuList}
+        options={{ 
+          headerTitle: () => (
+            <Image style={{width: 300, height: 52}} source={require('../../assets/images/logo_header.png')} />
+          ),
+          // cambiar el color de la flecha
+        }}
+      />
+      <Stack.Screen
+        name="FoodDetails"
+        component={FoodDetails}
+        options={{
+          headerTitle: () => (
+            <Image style={{width: 300, height: 52}} source={require('../../assets/images/logo_header.png')} />
+          ),
         }}
       />
     </Stack.Navigator>
